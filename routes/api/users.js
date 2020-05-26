@@ -3,6 +3,8 @@ const router = express.Router();
 const { check, validationResult } = require('express-validator');
 const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const config = require('config');
 
 const User = require('../../models/User');
 
@@ -51,12 +53,27 @@ router.post("/", [
             await user.save();
 
             //Return jwt
+            //Set payload (token body)
+            const payload = {
+                id: user.id
+            }
+            //Sign the token with the secret key
+            jwt.sign(
+                payload, 
+                config.get('jwtSecret'), 
+                { expiresIn: config.get('tokenExpires') },
+                //Callback function
+                (err, token) => {
+                    //If an error happens, throw the error as exception
+                    if (err) throw err;
+                    //Return created token
+                    res.json({token});
+                }
+            );
         }catch (err) {
             console.error(err.message);
-            resizeTo.status(500).send('Server Error');
+            res.status(500).send('Server Error');
         }
-
-        res.send("User registered");
     }
 );
 

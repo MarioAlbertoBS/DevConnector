@@ -1,3 +1,6 @@
 {
-    "mongoURI": "mongodb+srv://Mario:mario@devconnector-3fayp.mongodb.net/test?retryWrites=true&w=majority"
+    "mongoURI": "mongodb://127.0.0.1:27017/devconnection",
+    "jwtSecret": "secretToken",
+    "authHeader": "x-auth-token",
+    "tokenExpires": 360000
 }
