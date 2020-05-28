@@ -12,7 +12,8 @@ const connectDB = async () => {
           //Set connection options for Atlas (default usage is deprecated)
         useNewUrlParser: true,
         useUnifiedTopology: true,
-        useCreateIndex: true
+        useCreateIndex: true,
+        useFindAndModify: false
       });
       console.log("Database connected...");
     } catch (err) {
