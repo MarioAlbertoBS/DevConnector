@@ -5,7 +5,7 @@ import {
     AUTH_ERROR,
     LOGIN_SUCCESS,
     LOGIN_FAILED,
-    LOGOUT
+    LOGOUT,
 } from '../actions/types';
 
 const initialState = {
@@ -46,7 +46,6 @@ export default (state = initialState, action) => {
                 loading: false,
                 user: payload
             }
-
         default:
             return state;
     }
