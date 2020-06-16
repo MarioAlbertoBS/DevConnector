@@ -2,7 +2,7 @@ import {
     GET_PROFILE,
     PROFILE_ERROR,
     CLEAR_PROFILE,
-    UPDATE_PROFILE
+    UPDATE_PROFILE,
 } from '../actions/types';
 
 const initialState = {
@@ -31,7 +31,6 @@ export default (state = initialState, action) => {
                 loading: false
             }
         case CLEAR_PROFILE:
-            console.log('Clear Profile');
             return {
                 ...state,
                 profile: null,
