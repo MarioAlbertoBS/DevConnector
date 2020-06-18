@@ -52,9 +52,9 @@ const EditEducation = ({ profile: { profile, loading }, editEducation, getCurren
 
   return (
     <section className="container">
-      <h1 className="large text-primary">Add Your Education</h1>
+      <h1 className="large text-primary">Edit Your Education</h1>
       <p className="lead">
-        <i className="fas fa-code-branch"></i> Add Any school or bootcamp that you have attended
+        <i className="fas fa-code-branch"></i> You can update your Education
       </p>
       <small>* = required field</small>
       <form className="form" onSubmit={e => {

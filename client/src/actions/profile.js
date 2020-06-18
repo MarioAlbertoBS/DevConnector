@@ -231,6 +231,8 @@ export const editEducation = (formData, id, history) => async dispatch => {
     },
   };
 
+  console.log(formData);
+
   axios.put(`/api/profile/education/${id}`, formData, config)
   .then(res => {
     dispatch({

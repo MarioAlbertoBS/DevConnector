@@ -243,7 +243,7 @@ router.put('/experience/:exp_id', auth, async (req, res) => {
         if (location) newExp.location = location;
         if (from) newExp.from = from;
         if (to) newExp.to = to;
-        if (current) newExp.current = current;
+        newExp.current = current ? true : false;
         if (description) newExp.description = description;
         
         //Save changes
@@ -370,9 +370,11 @@ router.put('/education/:edu_id', auth, async (req, res) => {
         if (fieldofstudy) newEdu.fieldofstudy = fieldofstudy;
         if (from) newEdu.from = from;
         if (to) newEdu.to = to;
-        if (current) newEdu.current = current;
+        newEdu.current = current ? true : false;
         if (description) newEdu.description = description;
         
+        console.error('Current Recieved:' + current);
+        console.log('Education to Save: ' + newEdu.current);
         //Save changes
         await profile.save();
 

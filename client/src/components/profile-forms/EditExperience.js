@@ -56,10 +56,9 @@ const EditExperience = ({
 
   return (
     <section className="container">
-      <h1 className="large text-primary">Add An Experience</h1>
+      <h1 className="large text-primary">Edit You Experience</h1>
       <p className="lead">
-        <i className="fas fa-code-branch"></i> Add any developer/programming
-        positions that you have had in the past
+        <i className="fas fa-code-branch"></i> You can update your experience
       </p>
       <small>* = required field</small>
       <form
