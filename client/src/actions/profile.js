@@ -170,6 +170,36 @@ export const deleteExperience = id => async dispatch => {
     });
 }
 
+//Edit Experience
+export const editExperience = (formData, id, history) => async dispatch => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  axios.put(`/api/profile/experience/${id}`, formData, config)
+  .then(res => {
+    dispatch({
+      type: UPDATE_PROFILE,
+      payload: res.data
+    });
+
+    dispatch(setAlert('Experience Updated', 'success'));
+
+    history.push("/dashboard");
+  })
+  .catch(err => {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: {
+        msg: err.response.statusText,
+        status: err.response.status,
+      },
+    });
+  });
+}
+
 //Delete Education
 export const deleteEducation = id => async dispatch => {
   await axios
@@ -193,6 +223,35 @@ export const deleteEducation = id => async dispatch => {
     });
 }
 
+//Edit Education
+export const editEducation = (formData, id, history) => async dispatch => {
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  axios.put(`/api/profile/education/${id}`, formData, config)
+  .then(res => {
+    dispatch({
+      type: UPDATE_PROFILE,
+      payload: res.data
+    });
+
+    dispatch(setAlert('Education Updated', 'success'));
+
+    history.push("/dashboard");
+  })
+  .catch(err => {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: {
+        msg: err.response.statusText,
+        status: err.response.status,
+      },
+    });
+  });
+}
 //Delete Account and Profile
 export const deleteAccount = () => async dispatch => {
   if (window.confirm('Are you sure? This can NOT be undone!')) {
