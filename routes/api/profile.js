@@ -373,8 +373,6 @@ router.put('/education/:edu_id', auth, async (req, res) => {
         newEdu.current = current ? true : false;
         if (description) newEdu.description = description;
         
-        console.error('Current Recieved:' + current);
-        console.log('Education to Save: ' + newEdu.current);
         //Save changes
         await profile.save();
 

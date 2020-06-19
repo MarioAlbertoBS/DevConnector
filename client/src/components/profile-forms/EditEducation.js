@@ -22,16 +22,15 @@ const EditEducation = ({ profile: { profile, loading }, editEducation, getCurren
   useEffect(() => {
     //Retrive experience from profile state
     getCurrentProfile();
-    console.log(!loading ? profile : 'Empty');
     //Get index
     const index = window.location.pathname.split("/")[2];
 
     const education = loading || !profile.education[index] ? null : profile.education[index];
     
-    //Disable to if current is true
-    if (!loading && education.current) {
-        toggleDIsabled(!toDateDisabled);
-    }
+    // //Disable to if current is true
+    // if (!loading && education.current) {
+    //     toggleDIsabled(!toDateDisabled);
+    // }
 
     setFormData({
         id: loading || !education._id ? '' : education._id,
@@ -43,7 +42,7 @@ const EditEducation = ({ profile: { profile, loading }, editEducation, getCurren
         current: loading || !education.current ? false : education.current,
         description: loading || !education.description ? '' : education.description,
     });
-  }, [loading]);
+  }, [loading, getCurrentProfile]);
 
   const { school, degree, fieldofstudy, from, to, current, description } = formData;
 

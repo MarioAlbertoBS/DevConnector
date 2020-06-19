@@ -47,7 +47,7 @@ const EditExperience = ({
       current: loading || !experience.current ? false : experience.current,
       description: loading || !experience.description ? "" : experience.description,
     });
-  }, [loading]);
+  }, [loading, getCurrentProfile]);
 
   const { company, title, location, from, to, current, description } = formData;
 

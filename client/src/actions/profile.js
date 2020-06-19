@@ -4,6 +4,8 @@ import {
   UPDATE_PROFILE,
   ACCOUNT_DELETED,
   CLEAR_PROFILE,
+  GET_PROFILES,
+  GET_REPOS
 } from "./types";
 
 import axios from "axios";
@@ -16,6 +18,70 @@ export const getCurrentProfile = () => async (dispatch) => {
     .then((res) => {
       dispatch({
         type: GET_PROFILE,
+        payload: res.data,
+      });
+    })
+    .catch((err) => {
+      dispatch({
+        type: PROFILE_ERROR,
+        payload: {
+          msg: err.response.statusText,
+          status: err.response.status
+        },
+      });
+    });
+};
+
+//Get all profiles
+export const getProfiles = () => async (dispatch) => {
+  dispatch({ type: CLEAR_PROFILE });
+  await axios
+    .get("/api/profile")
+    .then((res) => {
+      dispatch({
+        type: GET_PROFILES,
+        payload: res.data,
+      });
+    })
+    .catch((err) => {
+      dispatch({
+        type: PROFILE_ERROR,
+        payload: {
+          msg: err.response.statusText,
+          status: err.response.status
+        },
+      });
+    });
+};
+
+//Get a profile by id
+export const getProfileById = userId => async (dispatch) => {
+  await axios
+    .get(`/api/profile/${userId}`)
+    .then((res) => {
+      dispatch({
+        type: GET_PROFILE,
+        payload: res.data,
+      });
+    })
+    .catch((err) => {
+      dispatch({
+        type: PROFILE_ERROR,
+        payload: {
+          msg: err.response.statusText,
+          status: err.response.status
+        },
+      });
+    });
+};
+
+//Get GitHub Repose
+export const getGithubRepos = githubusername => async (dispatch) => {
+  await axios
+    .get(`/api/profile/github/${githubusername}`)
+    .then((res) => {
+      dispatch({
+        type: GET_REPOS,
         payload: res.data,
       });
     })
@@ -230,8 +296,6 @@ export const editEducation = (formData, id, history) => async dispatch => {
       "Content-Type": "application/json",
     },
   };
-
-  console.log(formData);
 
   axios.put(`/api/profile/education/${id}`, formData, config)
   .then(res => {

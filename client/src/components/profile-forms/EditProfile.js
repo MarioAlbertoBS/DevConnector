@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Link, withRouter } from 'react-router-dom';
 import { createProfile, getCurrentProfile } from '../../actions/profile';
-import Alert from '../layout/Alert';
 
 const EditProfile = ({ profile: { profile, loading }, createProfile, getCurrentProfile, history }) => {
   const [formData, setFormData] = useState({
@@ -41,7 +40,7 @@ const EditProfile = ({ profile: { profile, loading }, createProfile, getCurrentP
         youtube: loading || !profile.social.youtube ? '' : profile.social.youtube,
         instagram: loading || !profile.social.instagram ? '' : profile.social.instagram,
     });
-  }, [loading]);
+  }, [loading, getCurrentProfile]);
 
   const {
     company,
