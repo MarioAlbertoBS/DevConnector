@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 import { editEducation, getCurrentProfile } from "../../actions/profile";
 
-const EditEducation = ({ profile: { profile, loading }, editEducation, getCurrentProfile, history }) => {
+const EditEducation = ({ profile: { profile, loading }, editEducation, getCurrentProfile, history, match }) => {
   const [formData, setFormData] = useState({
     id: "",
     school: "",
@@ -23,7 +23,7 @@ const EditEducation = ({ profile: { profile, loading }, editEducation, getCurren
     //Retrive experience from profile state
     getCurrentProfile();
     //Get index
-    const index = window.location.pathname.split("/")[2];
+    const index = match.params.index;
 
     const education = loading || !profile.education[index] ? null : profile.education[index];
     
@@ -42,7 +42,7 @@ const EditEducation = ({ profile: { profile, loading }, editEducation, getCurren
         current: loading || !education.current ? false : education.current,
         description: loading || !education.description ? '' : education.description,
     });
-  }, [loading, getCurrentProfile]);
+  }, [loading, getCurrentProfile, match]);
 
   const { school, degree, fieldofstudy, from, to, current, description } = formData;
 

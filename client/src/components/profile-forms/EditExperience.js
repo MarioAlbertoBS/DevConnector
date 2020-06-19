@@ -10,6 +10,7 @@ const EditExperience = ({
   getCurrentProfile,
   editExperience,
   history,
+  match
 }) => {
   const [formData, setFormData] = useState({
     id: "",
@@ -28,7 +29,7 @@ const EditExperience = ({
     //Retrive experience from profile state
     getCurrentProfile();
     //Get object index from url
-    const index = window.location.pathname.split("/")[2];
+    const index = match.params.index;
 
     const experience = loading || !profile.experience[index] ? null : profile.experience[index];
 
@@ -47,7 +48,7 @@ const EditExperience = ({
       current: loading || !experience.current ? false : experience.current,
       description: loading || !experience.description ? "" : experience.description,
     });
-  }, [loading, getCurrentProfile]);
+  }, [loading, getCurrentProfile, match]);
 
   const { company, title, location, from, to, current, description } = formData;
 
