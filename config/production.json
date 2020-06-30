@@ -1,8 +1,0 @@
-{
-    "mongoURI": "mongodb+srv://Mario:5796482310Alpha@devconnector-3fayp.mongodb.net/<dbname>?retryWrites=true&w=majority",
-    "jwtSecret": "secretToken",
-    "authHeader": "x-auth-token",
-    "tokenExpires": 360000,
-    "githubClientId": "Iv1.f3ad8c271c9a929b",
-    "githubSecret": "c27bc3aaebf5aabb48e71924b96bfbf911eca5f9"
-}

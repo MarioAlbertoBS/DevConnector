@@ -1,0 +1,8 @@
+{
+    "mongoURI": "[Insert MongoDB Connection String]",
+    "jwtSecret": "secretToken",
+    "authHeader": "x-auth-token",
+    "tokenExpires": 360000,
+    "githubClientId": "",
+    "githubSecret": ""
+}
