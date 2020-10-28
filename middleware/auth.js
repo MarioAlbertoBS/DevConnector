@@ -20,7 +20,7 @@ module .exports = function(req, res, next) {
     //Verify token
     try {
         //Decode token
-        const decoded = jwt.verify(token, config.get('jwtSecret'));
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
         //Put the user id as a request value
         req.user = decoded.id;
         //Callback function
