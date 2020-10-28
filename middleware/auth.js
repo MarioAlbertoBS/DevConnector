@@ -1,6 +1,8 @@
 const jwt = require('jsonwebtoken');
 const config = require('config');
 
+require('dotenv').config;
+
 /**
  * req    = request
  * res    = response
@@ -8,7 +10,7 @@ const config = require('config');
  */
 module .exports = function(req, res, next) {
     //Get token from header
-    const token = req.header(config.get('authHeader'));
+    const token = req.header(process.env.AUTH_HEADER);
 
     //Check if no token
     if (!token) {

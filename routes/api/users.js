@@ -6,6 +6,8 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require('config');
 
+require('dotenv').config();
+
 const User = require('../../models/User');
 
 //@route   POST api/users
@@ -60,8 +62,8 @@ router.post("/", [
             //Sign the token with the secret key
             jwt.sign(
                 payload, 
-                config.get('jwtSecret'), 
-                { expiresIn: config.get('tokenExpires') },
+                process.env.JWT_SECRET, 
+                { expiresIn: process.env.TOKEN_EXPIRES },
                 //Callback function
                 (err, token) => {
                     //If an error happens, throw the error as exception

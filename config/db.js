@@ -9,7 +9,6 @@ const password = process.env.DATABASE_PASSWORD;
 const database = process.env.DATABASE_NAME;
 
 const dbUri = `mongodb+srv://${username}:${password}@${host}/${database}?retryWrites=true&w=majority`;
-console.log(dbUri);
 
 //Stablish db connection as a promise
 const connectDB = async () => {
