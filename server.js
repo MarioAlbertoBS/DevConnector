@@ -6,6 +6,8 @@ const path = require("path");
 
 const connectDb = require("./config/db");
 
+require('dotenv').config();
+
 //Connect db
 connectDb();
 
